@@ -54,6 +54,8 @@ USER nobody
 
 # Clone the System into the docker container
 RUN git clone https://github.com/effectivecore/core .
+RUN git fetch --all
+RUN git switch -c origin/main
 
 # Expose the port NGINX is reachable on
 EXPOSE 80
