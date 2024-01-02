@@ -6,6 +6,7 @@ WORKDIR /var/www/html
 
 # Install packages
 RUN apk add --no-cache \
+    bash \
     supervisor \
     openssl \
     curl \
@@ -54,8 +55,7 @@ USER nobody
 
 # Clone the System into the docker container
 RUN git clone https://github.com/effectivecore/core .
-RUN git fetch --all
-RUN git switch -c origin/main
+RUN git checkout main
 
 # Expose the port NGINX is reachable on
 EXPOSE 80
